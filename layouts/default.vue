@@ -8,11 +8,12 @@ const { isDark, toggle } = useTheme()
 
 // Log visitor to Supabase (once per session)
 onMounted(() => {
+  if (window.location.hostname !== 'calc-hub.minhojan-world.site') return
   if (sessionStorage.getItem('visited')) return
   sessionStorage.setItem('visited', '1')
 
   const SUPABASE_URL = 'https://xxzveiasemaspdonppgf.supabase.co'
-  const SUPABASE_KEY = 'sb_publishable_EMv1OEZ9LUtFJ1krDPjzPw_p-pmbJrB'
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4enZlaWFzZW1hc3Bkb25wcGdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MTcyMTYsImV4cCI6MjA5MTA5MzIxNn0.lKo4N6xPM9XHcMIPMPr5KgL81VKglMUgYMmEpsFXCfc'
 
   fetch('https://ipapi.co/json/')
     .then(r => r.json())
