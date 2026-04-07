@@ -14,9 +14,7 @@ onMounted(() => {
   const SUPABASE_URL = 'https://xxzveiasemaspdonppgf.supabase.co'
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4enZlaWFzZW1hc3Bkb25wcGdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MzE5NDcsImV4cCI6MjA1ODEwNzk0N30.4_MxlPMmVkYMKEHEnMmJfHjiYMkMUwVQ_F2gMEn8mOc'
 
-  fetch('https://api.ipify.org?format=json')
-    .then(r => r.json())
-    .then(d => fetch('http://ip-api.com/json/' + d.ip))
+  fetch('https://ipwho.is/')
     .then(r => r.json())
     .then(geo => {
       fetch(SUPABASE_URL + '/rest/v1/visits', {
@@ -27,11 +25,11 @@ onMounted(() => {
           'Authorization': 'Bearer ' + SUPABASE_KEY,
         },
         body: JSON.stringify({
-          ip: geo.query,
+          ip: geo.ip,
           country: geo.country,
-          region: geo.regionName,
+          region: geo.region,
           city: geo.city,
-          isp: geo.isp,
+          isp: geo.connection ? geo.connection.isp : '',
           page: 'calculator-hub',
         }),
       })
