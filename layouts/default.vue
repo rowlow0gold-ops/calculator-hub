@@ -65,8 +65,105 @@ onMounted(() => {
       </div>
     </nav>
 
-    <main class="page">
-      <slot />
-    </main>
+    <div class="layout-body">
+      <!-- Left ad (desktop only) -->
+      <aside class="ad-sidebar ad-left">
+        <div class="ad-placeholder">
+          <span class="ad-label">Ad</span>
+        </div>
+      </aside>
+
+      <main class="page">
+        <slot />
+      </main>
+
+      <!-- Right ad (desktop only) -->
+      <aside class="ad-sidebar ad-right">
+        <div class="ad-placeholder">
+          <span class="ad-label">Ad</span>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Mobile bottom ad -->
+    <div class="ad-mobile">
+      <div class="ad-placeholder-mobile">
+        <span class="ad-label">Ad</span>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.layout-body {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.ad-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+  display: none;
+  padding-top: 2rem;
+}
+
+.ad-placeholder {
+  position: sticky;
+  top: 80px;
+  width: 160px;
+  height: 600px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+}
+
+.ad-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.ad-mobile {
+  display: block;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.ad-placeholder-mobile {
+  width: 100%;
+  height: 60px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+}
+
+.page {
+  flex: 1;
+  max-width: 600px;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .ad-sidebar {
+    display: block;
+  }
+  .ad-mobile {
+    display: none;
+  }
+}
+</style>
