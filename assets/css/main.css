@@ -147,8 +147,9 @@ a {
 
 /* ===== Page container ===== */
 .page {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  flex: 1;
   padding: 1.5rem 1rem;
 }
 

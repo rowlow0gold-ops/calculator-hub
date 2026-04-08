@@ -152,12 +152,6 @@ onMounted(() => {
   backdrop-filter: blur(12px);
 }
 
-.page {
-  flex: 1;
-  max-width: 600px;
-  width: 100%;
-}
-
 @media (min-width: 1200px) {
   .ad-sidebar {
     display: block;
