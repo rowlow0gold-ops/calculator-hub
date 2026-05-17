@@ -98,27 +98,29 @@ onMounted(() => {
 .layout-body {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 .ad-sidebar {
-  width: 160px;
   flex-shrink: 0;
   display: none;
   padding-top: 2rem;
 }
 
+.ad-left { padding-left: 1.5rem; }
+.ad-right { padding-right: 1.5rem; }
+
 .ad-placeholder {
   position: sticky;
-  top: 80px;
-  width: 160px;
+  top: 32px;
+  width: 200px;
   height: 600px;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,29 +134,23 @@ onMounted(() => {
 
 .ad-mobile {
   display: block;
-  padding: 0.75rem 1rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
+  padding: 1rem;
 }
 
 .ad-placeholder-mobile {
   width: 100%;
-  height: 60px;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
+  height: 90px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .ad-sidebar {
-    display: block;
+    display: flex;
   }
   .ad-mobile {
     display: none;
